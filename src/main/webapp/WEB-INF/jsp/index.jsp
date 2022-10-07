@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -11,7 +15,7 @@
 
 <body>
 	<jsp:include page="shared/sidebar.jsp" />
-	<div class="w3-container">
+	<div class="w3-container w3-display-middle">
 		<p>In this example, we demonstrate how to use two side
 			navigations.</p>
 		<p>We have created two "menu" buttons: one to open the side
