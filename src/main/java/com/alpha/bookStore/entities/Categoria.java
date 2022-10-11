@@ -1,16 +1,17 @@
 package com.alpha.bookStore.entities;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
+	@NotBlank
 	@Column(nullable = false)
 	private String descricao;
-
+	
 	@Column(nullable = false)
 	private Boolean ativo = true;
 

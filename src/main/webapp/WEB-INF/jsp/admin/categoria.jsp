@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -6,8 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>BookStore-Categoria</title>
 </head>
 
@@ -28,14 +28,10 @@
 						<td>
 							<c:choose>
 								<c:when test="${cat.ativo == true}">
-									<p>
-										<i class="bi bi-check-lg"></i>
-									</p>
+									<i class="fa fa-check-square fa-2x" aria-hidden="true" style="color: green; display: flex; align-items: center; justify-content: center;"></i>
 								</c:when>
 								<c:otherwise>
-									<p>								
-										<i class="bi bi-x-lg"></i>
-									</p>
+									<i class="fa fa-window-close fa-2x" aria-hidden="true" style="color: red; display: flex; align-items: center; justify-content: center;"></i>
 								</c:otherwise>
 							</c:choose>
 						</td>
