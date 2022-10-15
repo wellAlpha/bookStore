@@ -25,7 +25,7 @@
 					<form:input type="hidden" path="id" value="${cat.id}" />
 					<label class="w3-text-red"><b>Descrição</b></label>
 					<form:input class="w3-input w3-border" value="${cat.descricao}" type="text" path="descricao" />
-
+					
 					<form:errors path="descricao" />
 
 					<button class="w3-btn w3-red">Salvar</button>

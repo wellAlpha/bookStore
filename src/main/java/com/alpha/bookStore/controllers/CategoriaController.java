@@ -38,12 +38,14 @@ public class CategoriaController {
 		return modelAndView;
 	}
 	@PostMapping("/admin/categoria/create")
-	public ModelAndView createCategoriaPost(@Valid Categoria categoria, BindingResult errors) {
+	public ModelAndView createCategoriaPost(@Valid Categoria categoria, BindingResult errors, RedirectAttributes redirectAttributes) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/admin/categoria");
 		if(errors.hasErrors())
 			return createCategoria(categoria);
 		
 		categoriaRepository.save(categoria);
+		
+		redirectAttributes.addFlashAttribute("msg", "Salvo com sucesso!");
 		return modelAndView;
 	}
 	
@@ -71,7 +73,7 @@ public class CategoriaController {
 		
 		categoriaRepository.save(cat);
 		
-		redirectAttributes.addFlashAttribute("msg", "foi");
+		redirectAttributes.addFlashAttribute("msg", "Editado com sucesso!");
 
 		return modelAndView;
 	}
@@ -93,6 +95,7 @@ public class CategoriaController {
 		var cat = categoriaRepository.findById(id).get();
 		cat.setAtivo(!cat.getAtivo());
 		categoriaRepository.save(cat);
+		redirectAttributes.addFlashAttribute("msg", (cat.getAtivo() ? "Ativado com sucesso!" : "Desativado com sucesso!"));
 		return modelAndView;
 	}
 }
