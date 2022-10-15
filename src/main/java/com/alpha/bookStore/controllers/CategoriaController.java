@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.alpha.bookStore.entities.Categoria;
 import com.alpha.bookStore.repositories.CategoriaRepository;
@@ -45,20 +47,52 @@ public class CategoriaController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/admin/categoria/edit")
-	public ModelAndView editCategoria(Categoria categoria) {
+	@GetMapping("/admin/categoria/edit/{id}")
+	public ModelAndView editCategoria(@PathVariable Integer id, Categoria categoria) {
 		ModelAndView modelAndView = new ModelAndView("admin/formCategoria");
+		
+		var cat = categoriaRepository.findById(id).get();
+		
+		modelAndView.addObject("cat", cat);
 		
 		return modelAndView;
 	}
 	
 	@PostMapping("/admin/categoria/edit")
-	public ModelAndView editCategoriaPost(@Valid Categoria categoria, BindingResult errors) {
+	public ModelAndView editCategoriaPost(@Valid Categoria categoria, BindingResult errors, RedirectAttributes redirectAttributes) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/admin/categoria");
 		
 		if(errors.hasErrors())
-			return editCategoria(categoria);
+			return editCategoria(categoria.getId(), categoria);
 		
+		var cat = categoriaRepository.findById(categoria.getId()).get();
+		
+		cat.setDescricao(categoria.getDescricao());
+		
+		categoriaRepository.save(cat);
+		
+		redirectAttributes.addFlashAttribute("msg", "foi");
+
+		return modelAndView;
+	}
+	
+	@GetMapping("/admin/categoria/delete/{id}")
+	public ModelAndView deleteCategoria(@PathVariable Integer id) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/admin/categoria");
+				
+		var cat = categoriaRepository.findById(id).get();
+
+		categoriaRepository.delete(cat);
+
+		return modelAndView;
+	}
+	
+	@GetMapping("/admin/categoria/ativacao/{id}")
+	public ModelAndView ativacaoCategoria(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
+		ModelAndView modelAndView = new ModelAndView("redirect:/admin/categoria");
+		var cat = categoriaRepository.findById(id).get();
+		cat.setAtivo(!cat.getAtivo());
+		categoriaRepository.save(cat);
 		return modelAndView;
 	}
 }
