@@ -78,17 +78,6 @@ public class CategoriaController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/admin/categoria/delete/{id}")
-	public ModelAndView deleteCategoria(@PathVariable Integer id) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/admin/categoria");
-				
-		var cat = categoriaRepository.findById(id).get();
-
-		categoriaRepository.delete(cat);
-
-		return modelAndView;
-	}
-	
 	@GetMapping("/admin/categoria/ativacao/{id}")
 	public ModelAndView ativacaoCategoria(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/admin/categoria");

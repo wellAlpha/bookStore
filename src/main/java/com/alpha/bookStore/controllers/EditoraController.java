@@ -78,17 +78,6 @@ public class EditoraController {
 		return modelAndView;
 	}
 	
-	@GetMapping("/admin/editora/delete/{id}")
-	public ModelAndView deleteEditora(@PathVariable Integer id) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/admin/editora");
-				
-		var editoraReg = editoraRepository.findById(id).get();
-
-		editoraRepository.delete(editoraReg);
-
-		return modelAndView;
-	}
-	
 	@GetMapping("/admin/editora/ativacao/{id}")
 	public ModelAndView ativacaoEditora(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/admin/editora");

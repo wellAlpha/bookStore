@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <!DOCTYPE html>
@@ -36,9 +38,8 @@
 				<th><a href="/admin/editora/create"><i
 						class="fa fa-plus-circle fa-2x" aria-hidden="true"
 						style="color: green;"></i></a></th>
-				<th>Descrição</th>
+				<th>DescriÃ§Ã£o</th>
 				<th>Estado</th>
-				<th>#</th>
 				<th>#</th>
 				<th>#</th>
 			</thead>
@@ -61,10 +62,6 @@
 							href="${s:mvcUrl('EC#editEditora').arg(0, editora.id).build()}"><i
 								class="fa fa-edit fa-2x" aria-hidden="true" style="color: blue;"></i></a>
 
-						</td>
-						<td><a
-							href="${s:mvcUrl('EC#deleteEditora').arg(0, editora.id).build()}"><i
-								class="fa fa-trash fa-2x" aria-hidden="true" style="color: red;"></i></a>
 						</td>
 						<td><c:choose>
 								<c:when test="${editora.ativo == true}">
