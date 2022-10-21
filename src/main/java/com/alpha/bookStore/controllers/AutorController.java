@@ -12,9 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.alpha.bookStore.entities.Autor;
-import com.alpha.bookStore.entities.Editora;
 import com.alpha.bookStore.repositories.AutorRepository;
-import com.alpha.bookStore.repositories.EditoraRepository;
 
 @Controller
 public class AutorController {
@@ -56,9 +54,9 @@ public class AutorController {
 	public ModelAndView editAutor(@PathVariable Integer id, Autor autor) {
 		ModelAndView modelAndView = new ModelAndView("admin/formAutor");
 		
-		var editoraReg = AutorRepository.findById(id).get();
+		var autorReg = autorRepository.findById(id).get();
 		
-		modelAndView.addObject("edit", editoraReg);
+		modelAndView.addObject("aut", autorReg);
 		
 		return modelAndView;
 	}
@@ -72,7 +70,7 @@ public class AutorController {
 		
 		var autorReg = autorRepository.findById(autor.getId()).get();
 		
-		autor.setDescricao(autor.getNome());
+		autorReg.setNome(autor.getNome());
 		
 		autorRepository.save(autorReg);
 		
@@ -87,7 +85,7 @@ public class AutorController {
 		var autorReg = autorRepository.findById(id).get();
 		autorReg.setAtivo(!autorReg.getAtivo());
 		autorRepository.save(autorReg);
-		redirectAttributes.addFlashAttribute("msg", (editoraReg.getAtivo() ? "Ativado com sucesso!" : "Desativado com sucesso!"));
+		redirectAttributes.addFlashAttribute("msg", (autorReg.getAtivo() ? "Ativado com sucesso!" : "Desativado com sucesso!"));
 		return modelAndView;
 	}
 }
