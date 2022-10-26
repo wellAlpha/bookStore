@@ -1,5 +1,7 @@
 package com.alpha.bookStore.entities;
 
+import java.math.BigDecimal;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,38 +9,34 @@ public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@Column(nullable = false)
 	private String titulo;
-	
+
 	@Column(nullable = false)
 	private Integer paginas;
-	
+
 	@Column(nullable = false)
 	private String pathFoto;
-	
-	@Column(nullable = false)
-	private double preco;
-	
+
+	private BigDecimal preco;
+
 	@Column(nullable = false)
 	private Boolean destaque;
-	
+
 	@Column(nullable = false)
 	private Boolean ativo;
-	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "autor_id", referencedColumnName = "id")
+
+	@OneToOne
 	private Autor autor;
-	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "editora_id", referencedColumnName = "id")
+
+	@OneToOne
 	private Editora editora;
-	
-	@OneToOne(cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "categoria_id", referencedColumnName = "id")
+
+	@OneToOne
 	private Categoria categoria;
 
-	public Livro(Integer id, String titulo, Integer paginas, String pathFoto, double preco, Boolean destaque,
+	public Livro(Integer id, String titulo, Integer paginas, String pathFoto, BigDecimal preco, Boolean destaque,
 			Boolean ativo, Autor autor, Editora editora, Categoria categoria) {
 		super();
 		this.id = id;
@@ -85,11 +83,11 @@ public class Livro {
 		this.pathFoto = pathFoto;
 	}
 
-	public double getPreco() {
+	public BigDecimal getPreco() {
 		return preco;
 	}
 
-	public void setPreco(double preco) {
+	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
 
@@ -132,8 +130,5 @@ public class Livro {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
-	
-	
-	
+
 }

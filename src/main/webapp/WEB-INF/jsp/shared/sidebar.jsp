@@ -2,7 +2,8 @@
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
   <a href="/admin/categoria" class="w3-bar-item w3-button"><i class="fa fa-server" aria-hidden="true"></i> <span>Categorias</span></a>
   <a href="/admin/editora" class="w3-bar-item w3-button"><i class="fa fa-book" aria-hidden="true"></i> <span>Editoras</span></a>
-  <a href="" class="w3-bar-item w3-button"><i class="fa fa-address-book" aria-hidden="true"></i> <span>Autores</span></a>
+  <a href="/admin/autor" class="w3-bar-item w3-button"><i class="fa fa-users" aria-hidden="true"></i> <span>Autores</span></a>
+  <a href="/admin/livro" class="w3-bar-item w3-button"><i class="fa fa-address-book" aria-hidden="true"></i> <span>Livros</span></a>
 </div>
 
 <div class="w3-deep-purple">
