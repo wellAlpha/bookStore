@@ -14,6 +14,9 @@ public class Editora {
 	
 	@Column(nullable = false)
 	private Boolean ativo = true;
+	
+	@OneToOne(mappedBy = "editora")
+	private Livro livro;
 
 	public Editora(Integer id, String descricao, Boolean ativo) {
 		this.id = id;

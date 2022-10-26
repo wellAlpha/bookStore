@@ -14,6 +14,9 @@ public class Categoria {
 	
 	@Column(nullable = false)
 	private Boolean ativo = true;
+	
+	@OneToOne(mappedBy = "categoria")
+	private Livro livro;
 
 	public Categoria(Integer id, String descricao, Boolean ativo) {
 		this.id = id;

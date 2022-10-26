@@ -21,7 +21,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-<title>Categoria</title>
+<title>Autor</title>
 
 </head>
 
@@ -35,21 +35,21 @@
 		</c:choose>
 		<table class="w3-table-all">
 			<thead class="">
-				<th><a href="/admin/categoria/create"><i
+				<th><a href="/admin/autor/create"><i
 						class="fa fa-plus-circle fa-2x" aria-hidden="true"
 						style="color: green;"></i></a></th>
+				<th>Nome</th>
 				<th>Descrição</th>
-				<th>Estado</th>
 				<th>#</th>
 				<th>#</th>
 			</thead>
 			<tbody>
-				<c:forEach items="${categorias}" var="cat">
+				<c:forEach items="${autor}" var="autor">
 					<tr>
-						<td>${cat.id}</td>
-						<td>${cat.descricao}</td>
+						<td>${autor.id}</td>
+						<td>${autor.nome}</td>
 						<td><c:choose>
-								<c:when test="${cat.ativo == true}">
+								<c:when test="${autor.ativo == true}">
 									<i class="fa fa-check-square fa-2x" aria-hidden="true"
 										style="color: green; display: flex; align-items: center; justify-content: center;"></i>
 								</c:when>
@@ -59,14 +59,14 @@
 								</c:otherwise>
 							</c:choose></td>
 						<td><a
-							href="${s:mvcUrl('CC#editCategoria').arg(0, cat.id).build()}"><i
+							href="${s:mvcUrl('AC#editAutor').arg(0, autor.id).build()}"><i
 								class="fa fa-edit fa-2x" aria-hidden="true" style="color: blue;"></i></a>
 
 						</td>
 						<td><c:choose>
-								<c:when test="${cat.ativo == true}">
+								<c:when test="${autor.ativo == true}">
 									<a
-										href="${s:mvcUrl('CC#ativacaoCategoria').arg(0, cat.id).build()}">
+										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, autor.id).build()}">
 										<i class="fa fa-toggle-on fa-2x" aria-hidden="true"
 										style="color: green;"></i>
 									</a>
@@ -74,7 +74,7 @@
 								</c:when>
 								<c:otherwise>
 									<a
-										href="${s:mvcUrl('CC#ativacaoCategoria').arg(0, cat.id).build()}">
+										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, autor.id).build()}">
 										<i class="fa fa-toggle-off fa-2x" aria-hidden="true"></i>
 									</a>
 

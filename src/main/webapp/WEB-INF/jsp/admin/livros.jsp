@@ -21,7 +21,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 	crossorigin="anonymous"></script>
-<title>Categoria</title>
+<title>Livros</title>
 
 </head>
 
@@ -35,21 +35,40 @@
 		</c:choose>
 		<table class="w3-table-all">
 			<thead class="">
-				<th><a href="/admin/categoria/create"><i
+				<th><a href="/admin/livros/create"><i
 						class="fa fa-plus-circle fa-2x" aria-hidden="true"
 						style="color: green;"></i></a></th>
-				<th>Descrição</th>
-				<th>Estado</th>
+				<th>Título</th>
+				<th>Páginas</th>
+				<th>Preço</th>
+				<th>Destaque</th>
+				<th>Ativo</th>
+				<th>Autor</th>
+				<th>Editora</th>
+				<th>Categoria</th>
+				<th>Foto</th>
 				<th>#</th>
-				<th>#</th>
+				
 			</thead>
 			<tbody>
-				<c:forEach items="${categorias}" var="cat">
+				<c:forEach items="${livros}" var="liv">
 					<tr>
-						<td>${cat.id}</td>
-						<td>${cat.descricao}</td>
+						<td>${liv.id}</td>
+						<td>${liv.titulo}</td>
+						<td>${liv.paginas}</td>
+						<td>${liv.preco}</td>
 						<td><c:choose>
-								<c:when test="${cat.ativo == true}">
+								<c:when test="${liv.destaque == true}">
+									<i class="fa fa-check-square fa-2x" aria-hidden="true"
+										style="color: green; display: flex; align-items: center; justify-content: center;"></i>
+								</c:when>
+								<c:otherwise>
+									<i class="fa fa-window-close fa-2x" aria-hidden="true"
+										style="color: red; display: flex; align-items: center; justify-content: center;"></i>
+								</c:otherwise>
+							</c:choose></td>
+						<td><c:choose>
+								<c:when test="${liv.ativo == true}">
 									<i class="fa fa-check-square fa-2x" aria-hidden="true"
 										style="color: green; display: flex; align-items: center; justify-content: center;"></i>
 								</c:when>
@@ -59,14 +78,14 @@
 								</c:otherwise>
 							</c:choose></td>
 						<td><a
-							href="${s:mvcUrl('CC#editCategoria').arg(0, cat.id).build()}"><i
+							href="${s:mvcUrl('AC#editAutor').arg(0, liv.id).build()}"><i
 								class="fa fa-edit fa-2x" aria-hidden="true" style="color: blue;"></i></a>
 
 						</td>
 						<td><c:choose>
-								<c:when test="${cat.ativo == true}">
+								<c:when test="${liv.ativo == true}">
 									<a
-										href="${s:mvcUrl('CC#ativacaoCategoria').arg(0, cat.id).build()}">
+										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, liv.id).build()}">
 										<i class="fa fa-toggle-on fa-2x" aria-hidden="true"
 										style="color: green;"></i>
 									</a>
@@ -74,7 +93,7 @@
 								</c:when>
 								<c:otherwise>
 									<a
-										href="${s:mvcUrl('CC#ativacaoCategoria').arg(0, cat.id).build()}">
+										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, liv.id).build()}">
 										<i class="fa fa-toggle-off fa-2x" aria-hidden="true"></i>
 									</a>
 
