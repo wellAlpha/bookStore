@@ -16,21 +16,7 @@ public class Categoria {
 	private Boolean ativo = true;
 	
 
-	public Categoria(Integer id, String descricao, Boolean ativo) {
-		this.id = id;
-		this.descricao = descricao;
-		this.ativo = ativo;
-	}
-
-	public Categoria(String descricao) {
-
-		this.descricao = descricao;
-
-	}
-
-	public Categoria() {
-
-	}
+	
 
 	public Integer getId() {
 		return id;

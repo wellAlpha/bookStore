@@ -35,7 +35,7 @@
 		</c:choose>
 		<table class="w3-table-all">
 			<thead class="">
-				<th><a href="/admin/livros/create"><i
+				<th><a href="/admin/livro/create"><i
 						class="fa fa-plus-circle fa-2x" aria-hidden="true"
 						style="color: green;"></i></a></th>
 				<th>Título</th>

@@ -15,21 +15,7 @@ public class Editora {
 	@Column(nullable = false)
 	private Boolean ativo = true;
 
-	public Editora(Integer id, String descricao, Boolean ativo) {
-		this.id = id;
-		this.descricao = descricao;
-		this.ativo = ativo;
-	}
 
-	public Editora(String descricao) {
-
-		this.descricao = descricao;
-
-	}
-
-	public Editora() {
-
-	}
 
 	public Integer getId() {
 		return id;

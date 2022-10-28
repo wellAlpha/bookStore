@@ -15,22 +15,6 @@ public class Autor {
 	@Column(nullable = false)
 	private Boolean ativo = true;
 
-	public Autor(Integer id, String nome, Boolean ativo) {
-		this.id = id;
-		this.nome = nome;
-		this.ativo = ativo;
-	}
-
-	public Autor(String nome) {
-
-		this.nome = nome;
-
-	}
-
-	public Autor() {
-
-	}
-
 	public Integer getId() {
 		return id;
 	}

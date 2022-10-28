@@ -3,42 +3,47 @@ package com.alpha.bookStore.entities;
 import java.math.BigDecimal;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
+
 
 @Entity
 public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-
+	
+	@NotBlank
 	@Column(nullable = false)
 	private String titulo;
-
+	@NotNull
 	@Column(nullable = false)
 	private Integer paginas;
-
+	
 	@Column(nullable = false)
 	private String pathFoto;
-
+	@NotNull
 	private BigDecimal preco;
-
+	
 	@Column(nullable = false)
-	private Boolean destaque;
-
+	private Boolean destaque = false;
+	
 	@Column(nullable = false)
-	private Boolean ativo;
-
+	private Boolean ativo = true;
+	
 	@OneToOne
+	@NotNull
 	private Autor autor;
 
 	@OneToOne
+	@NotNull
 	private Editora editora;
 
 	@OneToOne
+	@NotNull
 	private Categoria categoria;
 
 	public Livro(Integer id, String titulo, Integer paginas, String pathFoto, BigDecimal preco, Boolean destaque,
 			Boolean ativo, Autor autor, Editora editora, Categoria categoria) {
-		super();
 		this.id = id;
 		this.titulo = titulo;
 		this.paginas = paginas;
