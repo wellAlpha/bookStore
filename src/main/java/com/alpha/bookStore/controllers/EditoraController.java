@@ -69,7 +69,7 @@ public class EditoraController {
 		
 		var editoraReg = editoraRepository.findById(editora.getId()).get();
 		
-		editora.setDescricao(editora.getDescricao());
+		editoraReg.setDescricao(editora.getDescricao());
 		
 		editoraRepository.save(editoraReg);
 		

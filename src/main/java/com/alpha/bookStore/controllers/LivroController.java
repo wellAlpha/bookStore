@@ -1,5 +1,7 @@
 package com.alpha.bookStore.controllers;
 
+import java.util.List;
+
 import javax.servlet.annotation.MultipartConfig;
 import javax.validation.Valid;
 
@@ -15,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.alpha.bookStore.entities.Livro;
+import com.alpha.bookStore.infra.FileSaver;
 import com.alpha.bookStore.repositories.AutorRepository;
 import com.alpha.bookStore.repositories.CategoriaRepository;
 import com.alpha.bookStore.repositories.EditoraRepository;
@@ -30,15 +33,24 @@ public class LivroController {
 	AutorRepository autorRepository;
 	@Autowired
 	EditoraRepository editoraRepository;
+	@Autowired
+	FileSaver fs;
 
 	@GetMapping("/admin/livro")
 	public ModelAndView index() {
-		ModelAndView modelAndView = new ModelAndView("admin/livros");
+		try {
+			ModelAndView modelAndView = new ModelAndView("admin/livros");
 
-		var livros = livroRepository.findAll();
+			List<Livro> livros = livroRepository.findAll();
 
-		modelAndView.addObject("livros", livros);
-		return modelAndView;
+			modelAndView.addObject("livros", livros);
+			
+			return modelAndView;
+		}catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+			return null;
+		}
 	}
 
 	@GetMapping("/admin/livro/create")
@@ -62,18 +74,23 @@ public class LivroController {
 	// }
 
 	@PostMapping("/admin/livro/create")
-	public ModelAndView create(@Valid Livro livro, BindingResult errors /*, MultipartFile file*/) {
-		ModelAndView modelAndView = new ModelAndView("admin/livros");
-		
-		/*if (!file.isEmpty()) {
+	public ModelAndView create(@Valid Livro livro, BindingResult errors, MultipartFile file) {
+		try {
+			ModelAndView modelAndView = new ModelAndView("redirect:/livro");
+			
+			if (!file.isEmpty()) {
+				fs.write("imgs", file);
+			}
+			
+			if (errors.hasErrors())
+				return form(livro);
 
-		}*/
-		
-		if (errors.hasErrors())
-			return form(livro);
+			livroRepository.save(livro);
 
-		livroRepository.save(livro);
-
-		return modelAndView;
+			return modelAndView;
+		}catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
 	}
 }

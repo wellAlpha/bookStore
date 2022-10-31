@@ -19,7 +19,7 @@ public class Livro {
 	@Column(nullable = false)
 	private Integer paginas;
 	
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String pathFoto;
 	@NotNull
 	private BigDecimal preco;
@@ -42,20 +42,21 @@ public class Livro {
 	@NotNull
 	private Categoria categoria;
 
-	public Livro(Integer id, String titulo, Integer paginas, String pathFoto, BigDecimal preco, Boolean destaque,
-			Boolean ativo, Autor autor, Editora editora, Categoria categoria) {
+	public Livro(Integer id, String titulo, Integer paginas, String pathFoto, BigDecimal preco, Autor autor, Editora editora, Categoria categoria) {
 		this.id = id;
 		this.titulo = titulo;
 		this.paginas = paginas;
 		this.pathFoto = pathFoto;
 		this.preco = preco;
-		this.destaque = destaque;
-		this.ativo = ativo;
+		this.destaque = true;
+		this.ativo = true;
 		this.autor = autor;
 		this.editora = editora;
 		this.categoria = categoria;
 	}
-
+	public Livro() {
+		
+	}
 	public Integer getId() {
 		return id;
 	}

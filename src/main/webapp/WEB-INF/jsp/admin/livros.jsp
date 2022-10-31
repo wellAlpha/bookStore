@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <!DOCTYPE html>
@@ -28,7 +28,7 @@
 <body>
 	<jsp:include page="../shared/sidebar.jsp" />
 	<div class="w3-container w3-display-middle">
-	<c:choose>
+		<c:choose>
 			<c:when test="${msg != null}">
 				<p class="alert alert-success" role="alert">${msg}</p>
 			</c:when>
@@ -48,7 +48,7 @@
 				<th>Categoria</th>
 				<th>Foto</th>
 				<th>#</th>
-				
+
 			</thead>
 			<tbody>
 				<c:forEach items="${livros}" var="liv">
@@ -77,12 +77,17 @@
 										style="color: red; display: flex; align-items: center; justify-content: center;"></i>
 								</c:otherwise>
 							</c:choose></td>
-						<td><a
+						
+
+						<td>${liv.autor.nome}</td>
+						<td>${liv.editora.descricao}</td>
+						<td>${liv.categoria.descricao}</td>
+						<td>não tem imagem</td>
+						<td style="display:flex;">
+						<a
 							href="${s:mvcUrl('AC#editAutor').arg(0, liv.id).build()}"><i
 								class="fa fa-edit fa-2x" aria-hidden="true" style="color: blue;"></i></a>
-
-						</td>
-						<td><c:choose>
+						<c:choose>
 								<c:when test="${liv.ativo == true}">
 									<a
 										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, liv.id).build()}">
@@ -98,13 +103,15 @@
 									</a>
 
 								</c:otherwise>
-							</c:choose></td>
+							</c:choose>
+							
+							</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 
 		</table>
-		
+
 	</div>
 	<script type="text/javascript" src="/resources/js/script.js"></script>
 </body>
