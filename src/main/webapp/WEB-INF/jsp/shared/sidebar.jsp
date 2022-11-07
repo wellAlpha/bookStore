@@ -1,5 +1,6 @@
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="leftMenu">
   <button onclick="closeLeftMenu()" class="w3-bar-item w3-button w3-large">Close &times;</button>
+  <a href="/" class="w3-bar-item w3-button"><i class="fa fa-home" aria-hidden="true"></i> <span>Home</span></a>
   <a href="/admin/categoria" class="w3-bar-item w3-button"><i class="fa fa-server" aria-hidden="true"></i> <span>Categorias</span></a>
   <a href="/admin/editora" class="w3-bar-item w3-button"><i class="fa fa-book" aria-hidden="true"></i> <span>Editoras</span></a>
   <a href="/admin/autor" class="w3-bar-item w3-button"><i class="fa fa-users" aria-hidden="true"></i> <span>Autores</span></a>

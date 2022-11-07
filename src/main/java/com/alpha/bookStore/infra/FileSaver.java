@@ -2,6 +2,7 @@ package com.alpha.bookStore.infra;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -16,7 +17,7 @@ private HttpServletRequest request;
 
 public String write(String baseFolder, MultipartFile file) {
 try {
-String realPath = request.getServletContext().getRealPath("/" + baseFolder);
+			String realPath = request.getServletContext().getRealPath("/" + baseFolder);
             String path = realPath + "/" + file.getOriginalFilename();
             file.transferTo(new File(path));
             return baseFolder + "/" + file.getOriginalFilename();
