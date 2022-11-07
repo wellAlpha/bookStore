@@ -69,10 +69,10 @@ public class LivroController {
 		return modelAndView;
 	}
 
-	// @InitBinder /* Converts empty strings into null when a form is submitted */
-	// public void initBinder(WebDataBinder binder) {
-	// binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
-	// }
+	 //@InitBinder /* Converts empty strings into null when a form is submitted */
+	 //public void initBinder(WebDataBinder binder) {
+		//	 binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+	 //}
 
 	@PostMapping("/admin/livro/create")
 	public ModelAndView create(@Valid Livro livro, BindingResult errors, MultipartFile file) {
@@ -118,6 +118,8 @@ public class LivroController {
 	public ModelAndView editPost(@Valid Livro livro, BindingResult errors, MultipartFile file) {
 		try {
 			ModelAndView modelAndView = new ModelAndView("redirect:/admin/livro");
+			if (errors.hasErrors())
+				return edit(livro.getId(), livro);
 			
 			var oldLivro = livroRepository.findById(livro.getId()).get();
 			
@@ -129,11 +131,12 @@ public class LivroController {
 			oldLivro.setAutor(livro.getAutor());
 			
 			if (!file.isEmpty()) {
+				
+				if(oldLivro.getPathFoto() != null)
+					fs.remove(oldLivro.getPathFoto());
+				
 				oldLivro.setPathFoto(fs.write("imgs", file));
 			}
-			
-			if (errors.hasErrors())
-				return form(livro);
 
 			livroRepository.save(oldLivro);
 

@@ -47,7 +47,7 @@
 				<th>Editora</th>
 				<th>Categoria</th>
 				<th>Foto</th>
-				<th >#</th>
+				<th>#</th>
 
 			</thead>
 			<tbody>
@@ -56,7 +56,7 @@
 						<td>${liv.id}</td>
 						<td>${liv.titulo}</td>
 						<td>${liv.paginas}</td>
-						<td>${liv.preco}</td>
+						<td>R$ ${liv.preco}</td>
 						<td><c:choose>
 								<c:when test="${liv.destaque == true}">
 									<i class="fa fa-check-square fa-2x" aria-hidden="true"
@@ -82,7 +82,17 @@
 						<td>${liv.autor.nome}</td>
 						<td>${liv.editora.descricao}</td>
 						<td>${liv.categoria.descricao}</td>
-						<td>não tem imagem</td>
+						<td><c:choose>
+								<c:when test="${liv.pathFoto != null}">
+										<img width="50px" height="40px" alt="imagem do livro"
+										src="/${liv.pathFoto}" />
+
+								</c:when>
+								<c:otherwise>
+									<img width="50px" height="40px" alt="imagem do livro"
+										src="http://www.ccta.ufpb.br/labeet/contents/acervos/categorias/cordofones/udecra/sem-imagem.jpg" />
+								</c:otherwise>
+							</c:choose></td>
 						<td style="display: flex;"><a
 							href="${s:mvcUrl('LC#edit').arg(0, liv.id).build()}"><i
 								class="fa fa-edit fa-2x" aria-hidden="true" style="color: blue;"></i></a>
@@ -99,8 +109,7 @@
 									</a>
 
 								</c:otherwise>
-							</c:choose>
-							<c:choose>
+							</c:choose> <c:choose>
 								<c:when test="${liv.ativo == true}">
 									<a href="${s:mvcUrl('LC#ativar').arg(0, liv.id).build()}">
 										<i class="fa fa-toggle-on fa-2x" aria-hidden="true"
@@ -114,9 +123,7 @@
 									</a>
 
 								</c:otherwise>
-							</c:choose>
-							
-							</td>
+							</c:choose></td>
 					</tr>
 				</c:forEach>
 			</tbody>

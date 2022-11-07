@@ -26,12 +26,14 @@
 							method="POST" modelAttribute="livro" enctype="multipart/form-data">
 
 							<form:input type="hidden" path="id" value="${liv.id}" />
+							
 							<div class="w3-row w3-margin">
 								<label class="w3-text-red"><b>Título</b></label>
 								<form:input class="w3-input w3-border" value="${liv.titulo}"
 									type="text" path="titulo" />
 								<form:errors path="titulo" />
 							</div>
+							
 							<div class="w3-row w3-margin">
 								<label class="w3-text-red"><b>Páginas</b></label>
 								<form:input class="w3-input w3-border" value="${liv.paginas}"
@@ -51,8 +53,7 @@
 									<form:select path="categoria" class="custom-select"
 										style="width:100px;">
 										<form:option value=""> --SELECT--</form:option>
-										<form:options items="${categorias}" value="${liv.categoria}"
-											itemLabel="descricao"></form:options>
+										<form:options items="${categorias}" itemLabel="descricao"></form:options>
 									</form:select>
 									<p>
 										<form:errors path="categoria" />
@@ -99,13 +100,13 @@
 							modelAttribute="livro" enctype="multipart/form-data">
 							<div class="w3-row w3-margin">
 								<label class="w3-text-red"><b>Título</b></label>
-								<form:input class="w3-input w3-border" value="${liv.titulo}"
+								<form:input class="w3-input w3-border"
 									type="text" path="titulo" />
 								<form:errors path="titulo" />
 							</div>
 							<div class="w3-row w3-margin">
 								<label class="w3-text-red"><b>Páginas</b></label>
-								<form:input class="w3-input w3-border" value="${liv.paginas}"
+								<form:input class="w3-input w3-border" 
 									type="number" path="paginas" />
 								<form:errors path="paginas" />
 							</div>
