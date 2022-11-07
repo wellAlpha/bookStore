@@ -47,7 +47,7 @@
 				<th>Editora</th>
 				<th>Categoria</th>
 				<th>Foto</th>
-				<th>#</th>
+				<th >#</th>
 
 			</thead>
 			<tbody>
@@ -77,28 +77,39 @@
 										style="color: red; display: flex; align-items: center; justify-content: center;"></i>
 								</c:otherwise>
 							</c:choose></td>
-						
+
 
 						<td>${liv.autor.nome}</td>
 						<td>${liv.editora.descricao}</td>
 						<td>${liv.categoria.descricao}</td>
 						<td>não tem imagem</td>
-						<td style="display:flex;">
-						<a
-							href="${s:mvcUrl('AC#editAutor').arg(0, liv.id).build()}"><i
+						<td style="display: flex;"><a
+							href="${s:mvcUrl('LC#edit').arg(0, liv.id).build()}"><i
 								class="fa fa-edit fa-2x" aria-hidden="true" style="color: blue;"></i></a>
-						<c:choose>
+							<c:choose>
+								<c:when test="${liv.destaque == true}">
+									<a href="${s:mvcUrl('LC#destacar').arg(0, liv.id).build()}">
+										<i class="fa fa-eye fa-2x" aria-hidden="true"></i>
+									</a>
+
+								</c:when>
+								<c:otherwise>
+									<a href="${s:mvcUrl('LC#destacar').arg(0, liv.id).build()}">
+										<i class="fa fa-eye-slash fa-2x" aria-hidden="true"></i>
+									</a>
+
+								</c:otherwise>
+							</c:choose>
+							<c:choose>
 								<c:when test="${liv.ativo == true}">
-									<a
-										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, liv.id).build()}">
+									<a href="${s:mvcUrl('LC#ativar').arg(0, liv.id).build()}">
 										<i class="fa fa-toggle-on fa-2x" aria-hidden="true"
 										style="color: green;"></i>
 									</a>
 
 								</c:when>
 								<c:otherwise>
-									<a
-										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, liv.id).build()}">
+									<a href="${s:mvcUrl('LC#ativar').arg(0, liv.id).build()}">
 										<i class="fa fa-toggle-off fa-2x" aria-hidden="true"></i>
 									</a>
 
