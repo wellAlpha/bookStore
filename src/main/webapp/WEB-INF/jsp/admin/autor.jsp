@@ -74,7 +74,7 @@
 								</c:when>
 								<c:otherwise>
 									<a
-										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, autor.id).build()}">
+										href="${s:mvcUrl('HC#buscarPorAutor').arg(0, autor.id).build()}">
 										<i class="fa fa-toggle-off fa-2x" aria-hidden="true"></i>
 									</a>
 

@@ -5,31 +5,30 @@ import java.math.BigDecimal;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-
 @Entity
 public class Livro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
-	
+
 	@NotBlank
 	@Column(nullable = false)
 	private String titulo;
 	@NotNull
 	@Column(nullable = false)
 	private Integer paginas;
-	
+
 	@Column(nullable = true)
 	private String pathFoto;
 	@NotNull
 	private BigDecimal preco;
-	
+
 	@Column(nullable = false)
 	private Boolean destaque = false;
-	
+
 	@Column(nullable = false)
 	private Boolean ativo = true;
-	
+
 	@OneToOne
 	@NotNull
 	private Autor autor;
@@ -42,8 +41,9 @@ public class Livro {
 	@NotNull
 	private Categoria categoria;
 
-	public Livro(Integer id, String titulo, Integer paginas, String pathFoto, BigDecimal preco, Autor autor, Editora editora, Categoria categoria) {
-		this.id = id;
+	public Livro(String titulo, Integer paginas, String pathFoto, BigDecimal preco, Autor autor, Editora editora,
+			Categoria categoria) {
+
 		this.titulo = titulo;
 		this.paginas = paginas;
 		this.pathFoto = pathFoto;
@@ -54,9 +54,11 @@ public class Livro {
 		this.editora = editora;
 		this.categoria = categoria;
 	}
+
 	public Livro() {
-		
+
 	}
+
 	public Integer getId() {
 		return id;
 	}

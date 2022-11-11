@@ -36,6 +36,8 @@ public class LivroController {
 	EditoraRepository editoraRepository;
 	@Autowired
 	FileSaver fs;
+	
+	
 
 	@GetMapping("/admin/livro")
 	public ModelAndView index() {
@@ -154,6 +156,7 @@ public class LivroController {
 		var liv = livroRepository.findById(id).get();
 		
 		liv.setAtivo(!liv.getAtivo());
+		liv.setDestaque(liv.getAtivo() ? liv.getDestaque() : false);
 		
 		livroRepository.save(liv);
 
