@@ -5,35 +5,40 @@
 	style="display: none" id="leftMenu">
 	<button onclick="closeLeftMenu()"
 		class="w3-bar-item w3-button w3-large">Close &times;</button>
-	<a href="/" class="w3-bar-item w3-button">
-	<i class="fa fa-home"
-		aria-hidden="true"></i> 
-		<span>Home</span>
-		</a> 
-		<a href="/admin/categoria"
-		class="w3-bar-item w3-button">
-		<i class="fa fa-server"
-		aria-hidden="true"></i> 
-		<span>Categorias</span></a> 
-		<a
-		href="/admin/editora" class="w3-bar-item w3-button">
-		<i
-		class="fa fa-book" aria-hidden="true"></i> 
-		<span>Editoras</span></a> 
-		<a
-		href="/admin/autor" class="w3-bar-item w3-button"><i
-		class="fa fa-users" aria-hidden="true"></i> <span>Autores</span></a> 
-		<ul style="list-style-type:nome">
-			<c:forEach items="${autores}" var="autor">
-				<a href="${s:mvcUrl('HC#buscarLivroPorAutor').arg(0, autor.id).build()}">
-					<li>${autor.nome}</li>
-				</a>
-			</c:forEach>
-		</ul> <i class="fa fa-address-book" aria-hidden="true"></i> <span>Livros</span>
-		<a
-		href="/admin/livro" class="w3-bar-item w3-button">
+	<div>
+		<a href="/" class="w3-bar-item w3-button"> <i class="fa fa-home"
+			aria-hidden="true"></i> <span>Home</span></a>
+	</div>
+	<div>
+		<a href="/admin/categoria" class="w3-bar-item w3-button"> <i
+			class="fa fa-server" aria-hidden="true"></i> <span>Categorias</span></a>
+	</div>
+	<div>
+		<a href="/admin/editora" class="w3-bar-item w3-button"> <i
+			class="fa fa-book" aria-hidden="true"></i> <span>Editoras</span></a>
+	</div>
+	<div>
+		<a href="/admin/autor" class="w3-bar-item w3-button"><i
+			class="fa fa-users" aria-hidden="true"></i> <span>Autores</span></a>
+		<div>
+			<ul class="w3-ul w3-tiny">
+				<c:forEach items="${autores}" var="autor">
+					<a
+						href="${s:mvcUrl('HC#buscarLivroPorAutor').arg(0, autor.id).build()}">
+						<li>${autor.nome}</li>
+					</a>
+				</c:forEach>
+			</ul>
+		</div>
+	</div>
+
+	<div>
 		
-		</a>
+		<a href="/admin/livro" class="w3-bar-item w3-button">
+		<i class="fa fa-address-book" aria-hidden="true"></i>  <span>Livros</span></a>
+		
+	</div>
+
 </div>
 
 <div class="w3-deep-purple">

@@ -11,8 +11,6 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!-- <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">  -->
 <title>BookStore</title>
 </head>
 
@@ -29,18 +27,19 @@
 	</div>
 	<div class="w3-container w3-display-middle">
 		<div style="display: flex; justify-content: space-between;">
+		
 			<c:forEach items="${livros}" var="liv">
 				<div class="w3-card-4 w3-margin">
 					<img src="${liv.pathFoto}" width="200px" height="200px"> </img>
 					<div class="w3-container w3-center margin: 3%;">
 						<p>título: ${liv.titulo }</p>
 						<p>R$ ${liv.preco}</p>
-						<p>${liv.paginas}:páginas</p>
-						<p>Autor: ${liv.autor.nome}</p>
+						<p>páginas: ${liv.paginas}</p>
+						<p>autor: ${liv.autor.nome}</p>
 					</div>
 				</div>
 			</c:forEach>
-
+			 
 		</div>
 	</div>
 

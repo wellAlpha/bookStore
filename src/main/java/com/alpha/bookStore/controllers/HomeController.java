@@ -50,7 +50,9 @@ public class HomeController {
 		var autor = autoRepository.findById(id).get();
 		
 		var livros = livroRepository.findByAutor(autor);
+		var autores = autoRepository.findByAtivoTrue();
 		
+		modelAndView.addObject("autores", autores);
 		modelAndView.addObject("livros", livros);
 		
 		return modelAndView;
@@ -61,7 +63,9 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView("index");
 		
 		var livros = livroRepository.findByTituloContainingIgnoreCase(livro.getTitulo());
+		var autores = autoRepository.findByAtivoTrue();
 		
+		modelAndView.addObject("autores", autores);
 		modelAndView.addObject("livros", livros);
 		
 		return modelAndView;
