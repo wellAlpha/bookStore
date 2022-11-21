@@ -54,7 +54,6 @@ public class HomeController {
 		
 		modelAndView.addObject("autores", autores);
 		
-		modelAndView.addObject("autores", autores);
 		modelAndView.addObject("livros", livros);
 		
 		return modelAndView;
@@ -65,22 +64,7 @@ public class HomeController {
 		ModelAndView modelAndView = new ModelAndView("index");
 		
 		var livros = livroRepository.findByTituloContainingIgnoreCase(livro.getTitulo());
-		var autores = autoRepository.findByAtivoTrue();
 		
-		modelAndView.addObject("autores", autores);
-		modelAndView.addObject("livros", livros);
-		
-		return modelAndView;
-	}
-	
-	@GetMapping("/destalhes/livro/{id}")
-	public ModelAndView detalhesLivro(@PathVariable int id) {
-		ModelAndView modelAndView = new ModelAndView("index");
-		
-		var livros = livroRepository.findByTituloContainingIgnoreCase(livro.getTitulo());
-		var autores = autoRepository.findByAtivoTrue();
-		
-		modelAndView.addObject("autores", autores);
 		modelAndView.addObject("livros", livros);
 		
 		return modelAndView;
