@@ -60,9 +60,9 @@
 					<div class="card-body">
 						<h5 class="card-title">${liv.titulo }</h5>
 						<p class="card-text">R$ ${liv.preco}</p>
-						<p class="card-text">${liv.paginas}páginas</p>
-						<p class="card-text">Autor: ${liv.autor.nome}}</p>
-						<a href="${s:mvcUrl('HC#detalhesLivro').arg(0, liv.id).build()}"
+						<p class="card-text">${liv.paginas} páginas</p>
+						<p class="card-text">Autor: ${liv.autor.nome}</p>
+						<a href="${s:mvcUrl('HC#cartAdd').arg(0, liv.id).build()}"
 							class="btn btn-primary">Adicionar ao carrinho</a>
 					</div>
 				</div>
