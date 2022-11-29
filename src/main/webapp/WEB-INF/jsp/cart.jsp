@@ -31,7 +31,9 @@
 
 		<div class="col-3"></div>
 		<div class="col-3 justify-content-center">
-			<h3 class="display-4">Pedidos <i class="fa fa-cart-arrow-down" aria-hidden="true"></i></h3>
+			<h3 class="display-4">
+				Pedidos <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+			</h3>
 			<c:forEach items="${books}" var="liv">
 				<div class="card mb-3">
 					<div class="row g-0">
@@ -51,13 +53,24 @@
 								</p>
 								<div class="d-flex justify-content-end">
 									<div>
-										<a href=""><i class="fa fa-plus-circle" aria-hidden="true"></i> </a>
-										<input readonly="readonly" class="w-25 border border-primary text-center" type="number" value="${carrinho.searchBookQtdCart(liv)}" min="1">
-										<a href=""><i class="fa fa-minus-circle" aria-hidden="true"></i></a>
+										<form:form servletRelativeAction="/cart/livro/update"
+											method="post">
+											<input type="hidden" name="livroId" value="${liv.id}">
+											<input class="w-25 border border-primary text-center"
+												id="quantidade" type="number"
+												value="${carrinho.getTotalPorLivro(liv)}" min="1"
+												name="quantidade">
+											<button type="submit" class="fa fa-wrench" aria-hidden="true">
+											</button>
+										</form:form>
+										<p class="card-text">
+											<small class="text-muted">R$
+												${carrinho.getTotalPrecoPorLivro(liv)}</small>
+										</p>
 									</div>
 									<a href="${s:mvcUrl('SCC#remove').arg(0, liv.id).build()}"><i
 										class="fa fa-trash fa" aria-hidden="true"></i></a>
-								
+
 								</div>
 							</div>
 						</div>
@@ -70,6 +83,10 @@
 		<div class="col-3 ">
 			<div class="row m-2 ">
 				<div class="card p-3">
+					<p class="card-text">
+						<small class="text-muted">
+							Subtotal: R$ ${carrinho.getSubTotal()}</small>
+					</p>
 					<button class="btn btn-primary">Finalizar Compra</button>
 				</div>
 			</div>

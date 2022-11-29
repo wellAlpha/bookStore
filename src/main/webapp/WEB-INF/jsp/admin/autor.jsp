@@ -39,7 +39,7 @@
 						class="fa fa-plus-circle fa-2x" aria-hidden="true"
 						style="color: green;"></i></a></th>
 				<th>Nome</th>
-				<th>Descrição</th>
+				<th>Estado</th>
 				<th>#</th>
 				<th>#</th>
 			</thead>

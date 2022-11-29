@@ -27,8 +27,6 @@ public class HomeController {
 	EditoraRepository editoraRepository;
 	@Autowired
 	LivroRepository livroRepository;
-	@Autowired
-	Carrinho cart;
 	
 	
 	@GetMapping("/")
@@ -81,19 +79,6 @@ public class HomeController {
 	public ModelAndView detalhesLivro(@PathVariable int id) {
 		ModelAndView modelAndView = new ModelAndView("index");
 		
-		return modelAndView;
-	}
-	@GetMapping("/cart/add/{id}")
-	public ModelAndView cartAdd(@PathVariable int id, Livro livro) {
-		ModelAndView modelAndView = new ModelAndView("redirect:/cart");
-		var livros = livroRepository.findByTituloContainingIgnoreCase(livro.getTitulo());
-		var autores = autoRepository.findByAtivoTrue();
-		
-		modelAndView.addObject("autores", autores);
-		modelAndView.addObject("livros", livros);
-		var livroAdd = livroRepository.findById(id).get();
-		
-		cart.add(livroAdd);
 		return modelAndView;
 	}
 	
