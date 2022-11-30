@@ -22,14 +22,16 @@
 </head>
 
 <body>
-	<jsp:include page="shared/sidebar.jsp" />
+	<!--<jsp:include page="shared/sidebar.jsp" />-->
 
 
 
 
 	<div class="container-fluid d-flex justify-content-between">
 
-		<div class="col-3"></div>
+		<div class="col-3">
+		<a href="/"><i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
+		</div>
 		<div class="col-3 justify-content-center">
 			<h3 class="display-4">
 				Pedidos <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
