@@ -46,6 +46,8 @@ public class CategoriaControllerAPI {
 	@DeleteMapping("/delete/{id}")
 	public void delete(@PathVariable Integer id)
 	{
-		categoriaRepository.deleteById(id);
+		var categoria = categoriaRepository.findById(id).get();
+		categoria.setAtivo(false);
+		categoriaRepository.save(categoria);
 	}
 }
