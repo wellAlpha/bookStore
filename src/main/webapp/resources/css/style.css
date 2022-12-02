@@ -1,0 +1,14 @@
+.slider .slides li .caption {
+    top: 50%;
+}
+
+.social-top li {
+    height: 40px;
+    width: 40px;
+    display: inline;
+    margin-left: 10px;
+}
+
+.social-top li:hover {
+    width: 100px;
+}

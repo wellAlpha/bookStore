@@ -23,7 +23,7 @@
 					action="${s:mvcUrl('AC#autorPost').build()}"
 					method="POST" modelAttribute="autor">
 					<form:input type="hidden" path="id" value="${aut.id}" />
-					<label class="w3-text-red"><b>nome</b></label>
+					<label class="w3-text-red"><b>Nome</b></label>
 					<form:input class="w3-input w3-border" value="${aut.nome}" type="text" path="nome" />
 					
 					<form:errors path="nome" />
@@ -36,7 +36,7 @@
 				<form:form class="w3-container"
 					action="${s:mvcUrl('AC#createAutorPost').build()}"
 					method="POST" modelAttribute="autor">
-					<label class="w3-text-red"><b>nome</b></label>
+					<label class="w3-text-red"><b>Nome</b></label>
 					<form:input class="w3-input w3-border" type="text" path="nome" />
 
 					<form:errors path="nome" />

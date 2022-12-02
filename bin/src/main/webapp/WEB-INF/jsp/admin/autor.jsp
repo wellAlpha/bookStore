@@ -39,7 +39,7 @@
 						class="fa fa-plus-circle fa-2x" aria-hidden="true"
 						style="color: green;"></i></a></th>
 				<th>Nome</th>
-				<th>Descrição</th>
+				<th>Estado</th>
 				<th>#</th>
 				<th>#</th>
 			</thead>
@@ -74,7 +74,7 @@
 								</c:when>
 								<c:otherwise>
 									<a
-										href="${s:mvcUrl('AC#ativacaoAutor').arg(0, autor.id).build()}">
+										href="${s:mvcUrl('HC#buscarPorAutor').arg(0, autor.id).build()}">
 										<i class="fa fa-toggle-off fa-2x" aria-hidden="true"></i>
 									</a>
 

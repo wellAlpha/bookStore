@@ -1,5 +1,8 @@
 package com.alpha.bookStore.controllers;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.alpha.bookStore.entities.Livro;
 import com.alpha.bookStore.infra.Carrinho;
+import com.alpha.bookStore.repositories.AutorRepository;
 import com.alpha.bookStore.repositories.LivroRepository;
 
 @Controller
@@ -23,56 +27,65 @@ public class ShoppingCartController {
 	Carrinho carrinho;
 	@Autowired
 	LivroRepository livroRepository;
-	
+	@Autowired
+	AutorRepository autoRepository;
+
+	@GetMapping("/cart")
+	public ModelAndView cart(Livro livro) {
+		ModelAndView modelAndView = new ModelAndView("cart");
+		var books = carrinho.getLivros();
+		var autores = autoRepository.findByAtivoTrue();
+
+		modelAndView.addObject("autores", autores);
+		modelAndView.addObject("books", books);
+
+		return modelAndView;
+	}
+
 	@GetMapping("/cart/add/{id}")
 	public ModelAndView cartAdd(@PathVariable int id, Livro livro) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/cart");
-//		var livros = livroRepository.findByTituloContainingIgnoreCase(livro.getTitulo());
-//		var autores = autoRepository.findByAtivoTrue();
-		
-//		modelAndView.addObject("autores", autores);
-//		modelAndView.addObject("livros", livros);
+
 		var livroAdd = livroRepository.findById(id).get();
-		
+
 		carrinho.add(livroAdd);
 		return modelAndView;
 	}
-	
-	@GetMapping("/cart")
-	public ModelAndView cart() {
-		ModelAndView modelAndView = new ModelAndView("cart");
-		var books = carrinho.getLivros();
-		
-		modelAndView.addObject("books", books);
-		
-		return modelAndView;
-	}
-	
+
 	@GetMapping("/cart/livro/{id}")
 	public ModelAndView remove(@PathVariable Integer id) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/cart");
 		var books = carrinho.getLivros();
 		System.out.println(id);
 		var livro = livroRepository.findById(id).get();
-		
-		if(livro != null)
+
+		if (livro != null)
 			carrinho.remove(livro);
-		
+
 		modelAndView.addObject("books", books);
-		
+
 		return modelAndView;
 	}
-	
+
 	@PostMapping("/cart/livro/update")
 	public ModelAndView update(Integer livroId, Integer quantidade) {
 		ModelAndView modelAndView = new ModelAndView("redirect:/cart");
-		
+
 		carrinho.update(livroRepository.findById(livroId).get(), quantidade);
-		
+
 		return modelAndView;
 	}
-	
-	
-	
-	
+
+	@GetMapping("/cart/finalizacao")
+	public ModelAndView finalizacao(Livro livro) {
+		ModelAndView modelAndView = new ModelAndView("finalizacao");
+		UUID uuid = UUID.randomUUID();
+
+		modelAndView.addObject("pedidos", new ArrayList<>(carrinho.getLivros()));
+		modelAndView.addObject("referencia", uuid);
+
+		// carrinho.clear();
+		return modelAndView;
+	}
+
 }

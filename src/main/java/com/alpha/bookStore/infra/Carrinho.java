@@ -59,6 +59,9 @@ public class Carrinho {
 	public void remove(Livro livro) {
 		cart.remove(livro);
 	}
+	public void clear() {
+		cart.clear();
+	}
 	
 	public void update(Livro livro, Integer qtd) {
 		cart.put(livro, qtd);

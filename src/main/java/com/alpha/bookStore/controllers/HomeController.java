@@ -47,10 +47,9 @@ public class HomeController {
 	}
 	@GetMapping("/{id}")
 	public ModelAndView buscarLivroPorAutor(@PathVariable Integer id, Livro livro) {
-		ModelAndView modelAndView = new ModelAndView("index");
+		ModelAndView modelAndView = new ModelAndView("livro.autor");
 		
 		var autor = autoRepository.findById(id).get();
-		
 		var livros = livroRepository.findByAutor(autor);
 		var autores = autoRepository.findByAtivoTrue();
 		
@@ -64,7 +63,7 @@ public class HomeController {
 	
 	@PostMapping("/busca")
 	public ModelAndView barraDeBusca(Livro livro) {
-		ModelAndView modelAndView = new ModelAndView("index");
+		ModelAndView modelAndView = new ModelAndView("livro.autor");
 		
 		var livros = livroRepository.findByTituloContainingIgnoreCase(livro.getTitulo());
 		var autores = autoRepository.findByAtivoTrue();

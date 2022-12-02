@@ -22,15 +22,56 @@
 </head>
 
 <body>
-	<!--<jsp:include page="shared/sidebar.jsp" />-->
 
+	<nav class="navbar navbar-expand-lg bg-info">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/"><img
+				src="resources/img/livraria.png" alt="" class="responsive-img left"
+				style="max-height: 100px;"></a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="#"></a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Categoria</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Autor</a>
+						<ul class="dropdown-menu">
+							<c:forEach items="${autores}" var="autor">
+								<li><a class="dropdown-item"
+									href="${s:mvcUrl('HC#buscarLivroPorAutor').arg(0, autor.id).build()}">${autor.nome}</a></li>
+							</c:forEach>
+
+						</ul></li>
+				</ul>
+				<form:form class="d-flex" role="search"
+					action="${s:mvcUrl('HC#barraDeBusca').build()}" method="POST"
+					modelAttribute="livro">
+					<form:input class="form-control me-2" type="search"
+						placeholder="Search" aria-label="Search" path="titulo" />
+					<button class="btn btn-outline-success" type="submit">Buscar</button>
+				</form:form>
+				<div class=" col-2 d-flex justify-content-center">
+					<a href="/cart"><i class="fa fa-shopping-cart fa-3x"
+						aria-hidden="true"></i></a>
+				</div>
+
+			</div>
+		</div>
+	</nav>
 
 
 	<div class="container-fluid d-flex justify-content-between">
 
 		<div class="col-3">
-		<a href="/"><i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
+			<a href="/"><i class="fa fa-arrow-left fa-3x" aria-hidden="true"></i></a>
 		</div>
 		<div class="col-3 justify-content-center">
 			<h3 class="display-4">
@@ -84,13 +125,25 @@
 		</div>
 		<div class="col-3 ">
 			<div class="row m-2 ">
-				<div class="card p-3">
-					<p class="card-text">
-						<small class="text-muted">
-							Subtotal: R$ ${carrinho.getSubTotal()}</small>
-					</p>
-					<button class="btn btn-primary">Finalizar Compra</button>
-				</div>
+
+
+				<c:choose>
+					<c:when test="${books.size() == 0}">
+
+					</c:when>
+					<c:otherwise>
+						<div class="card p-3">
+							<p class="card-text">
+								<small class="text-muted"> Subtotal: R$
+									${carrinho.getSubTotal()}</small>
+							</p>
+							<a class="btn btn-primary"
+								href="${s:mvcUrl('SCC#finalizacao').build()}">Finalizar
+								Compra</a>
+						</div>
+					</c:otherwise>
+				</c:choose>
+
 			</div>
 		</div>
 
@@ -99,6 +152,10 @@
 
 
 	<script type="text/javascript" src="resources/js/script.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>
