@@ -37,9 +37,26 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#"></a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Categoria</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Editora</a>
+						<ul class="dropdown-menu">
+							<c:forEach items="${editoras}" var="editora">
+								<li><a class="dropdown-item"
+									href="${s:mvcUrl('HC#buscarLivroPorEditora').arg(0, editora.id).build()}">${editora.descricao}</a></li>
+							</c:forEach>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Categoria</a>
+						<ul class="dropdown-menu">
+							<c:forEach items="${categorias}" var="cat">
+								<li><a class="dropdown-item"
+									href="${s:mvcUrl('HC#buscarLivroPorCategoria').arg(0, cat.id).build()}">${cat.descricao}</a></li>
+							</c:forEach>
+
+						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false"> Autor</a>

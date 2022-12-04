@@ -20,7 +20,7 @@ import com.alpha.bookStore.repositories.LivroRepository;
 @Controller
 public class HomeController {
 	@Autowired
-	CategoriaRepository catogoriaRepository;
+	CategoriaRepository categoriaRepository;
 	@Autowired
 	AutorRepository autoRepository;
 	@Autowired 
@@ -28,12 +28,11 @@ public class HomeController {
 	@Autowired
 	LivroRepository livroRepository;
 	
-	
 	@GetMapping("/")
 	public ModelAndView index(ModelAndView modelAndView, Livro livro) {
 		modelAndView.setViewName("index");
 		
-		var categorias = catogoriaRepository.findByAtivoTrue();
+		var categorias = categoriaRepository.findByAtivoTrue();
 		var autores = autoRepository.findByAtivoTrue();
 		var editoras = editoraRepository.findByAtivoTrue();
 		var livros = livroRepository.findByDestaqueTrue();
@@ -45,17 +44,59 @@ public class HomeController {
 		
 		return modelAndView;
 	}
-	@GetMapping("/{id}")
+	@GetMapping("livro/autor/{id}")
 	public ModelAndView buscarLivroPorAutor(@PathVariable Integer id, Livro livro) {
 		ModelAndView modelAndView = new ModelAndView("livro.autor");
 		
 		var autor = autoRepository.findById(id).get();
 		var livros = livroRepository.findByAutor(autor);
+		
 		var autores = autoRepository.findByAtivoTrue();
+		var editoras = editoraRepository.findByAtivoTrue();
+		var categorias = categoriaRepository.findByAtivoTrue();
 		
 		modelAndView.addObject("autores", autores);
+		modelAndView.addObject("editoras", editoras);
+		modelAndView.addObject("categorias", categorias);
+		
+		modelAndView.addObject("livros", livros);
+		
+		return modelAndView;
+	}
+	@GetMapping("livro/editora/{id}")
+	public ModelAndView buscarLivroPorEditora(@PathVariable Integer id, Livro livro) {
+		ModelAndView modelAndView = new ModelAndView("livro.autor");
+		
+		var editora = editoraRepository.findById(id).get();
+		var livros = livroRepository.findByEditora(editora);
+		
+		var autores = autoRepository.findByAtivoTrue();
+		var editoras = editoraRepository.findByAtivoTrue();
+		var categorias = categoriaRepository.findByAtivoTrue();
 		
 		modelAndView.addObject("autores", autores);
+		modelAndView.addObject("editoras", editoras);
+		modelAndView.addObject("categorias", categorias);
+		
+		modelAndView.addObject("livros", livros);
+		
+		return modelAndView;
+	}
+	@GetMapping("livro/categoria/{id}")
+	public ModelAndView buscarLivroPorCategoria(@PathVariable Integer id, Livro livro) {
+		ModelAndView modelAndView = new ModelAndView("livro.autor");
+		
+		var categoria = categoriaRepository.findById(id).get();
+		var livros = livroRepository.findByCategoria(categoria);
+		
+		var autores = autoRepository.findByAtivoTrue();
+		var editoras = editoraRepository.findByAtivoTrue();
+		var categorias = categoriaRepository.findByAtivoTrue();
+		
+		modelAndView.addObject("autores", autores);
+		modelAndView.addObject("editoras", editoras);
+		modelAndView.addObject("categorias", categorias);
+		
 		modelAndView.addObject("livros", livros);
 		
 		return modelAndView;
@@ -76,7 +117,7 @@ public class HomeController {
 	
 	@GetMapping("/destalhes/livro/{id}")
 	public ModelAndView detalhesLivro(@PathVariable int id) {
-		ModelAndView modelAndView = new ModelAndView("index");
+		ModelAndView modelAndView = new ModelAndView("detalhes.livro");
 		
 		return modelAndView;
 	}

@@ -38,9 +38,26 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#"></a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Categoria</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Editora</a>
+						<ul class="dropdown-menu">
+							<c:forEach items="${editoras}" var="editora">
+								<li><a class="dropdown-item"
+									href="${s:mvcUrl('HC#buscarLivroPorEditora').arg(0, editora.id).build()}">${editora.descricao}</a></li>
+							</c:forEach>
+
+						</ul></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> Categoria</a>
+						<ul class="dropdown-menu">
+							<c:forEach items="${categorias}" var="cat">
+								<li><a class="dropdown-item"
+									href="${s:mvcUrl('HC#buscarLivroPorCategoria').arg(0, cat.id).build()}">${cat.descricao}</a></li>
+							</c:forEach>
+
+						</ul></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" role="button"
 						data-bs-toggle="dropdown" aria-expanded="false"> Autor</a>
@@ -103,22 +120,23 @@
 	<div style="display: flex; justify-content: space-evenly;">
 		<c:forEach items="${livros}" var="liv">
 
-		<div class="card border" style="width: 17rem; height: 5rem">
-			<img src="${liv.pathFoto != null ? liv.pathFoto : "
-				http://www.ccta.ufpb.br/labeet/contents/acervos/categorias/cordofones/udecra/sem-imagem.jpg"}" style="height: 18rem"
-				class="card-img-top">
-			<div class="card-body">
-				<h5 class="card-title">${liv.titulo }</h5>
-				<p class="card-text">R$ ${liv.preco}</p>
-				<p class="card-text">${liv.paginas} páginas</p>
-				<p class="card-text">Autor: ${liv.autor.nome}</p>
-				<a href="${s:mvcUrl('SCC#cartAdd').arg(0, liv.id).build()}"
-					class="btn btn-primary">Adicionar ao carrinho</a>
+			<div class="card border" style="width: 17rem; height: 5rem">
+				<a href=""> <img src="${liv.pathFoto != null ? liv.pathFoto : "
+					http://www.ccta.ufpb.br/labeet/contents/acervos/categorias/cordofones/udecra/sem-imagem.jpg"}" style="height: 18rem"
+					class="card-img-top">
+				</a>
+				<div class="card-body">
+					<h5 class="card-title">${liv.titulo }</h5>
+					<p class="card-text">R$ ${liv.preco}</p>
+					<p class="card-text">${liv.paginas}páginas</p>
+					<p class="card-text">Autor: ${liv.autor.nome}</p>
+					<a href="${s:mvcUrl('SCC#cartAdd').arg(0, liv.id).build()}"
+						class="btn btn-primary">Adicionar ao carrinho</a>
+				</div>
 			</div>
-		</div>
 
 
-	</c:forEach>
+		</c:forEach>
 	</div>
 
 	<div clas="card-header">

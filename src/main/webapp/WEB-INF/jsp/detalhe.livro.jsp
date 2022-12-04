@@ -27,7 +27,7 @@
 	<nav class="navbar navbar-expand-lg bg-info">
 		<div class="container-fluid">
 			<a class="navbar-brand" href="/"><img
-				src="resources/img/livraria.png" alt="class="responsive-img left"
+				src="/resources/img/livraria.png" alt="class="responsive-img left"
 				style="max-height: 100px;"></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -75,7 +75,7 @@
 	<div class="card mb-3" style="max-width: 540px;">
 		<div class="row g-0">
 			<div class="col-md-4">
-				<img src="resources/img/talvez-voce-deva-conversar-com-alguem-workbook-2091-20220429135714.jpg" class="img-fluid rounded-start" alt="...">
+				<img src="/resources/img/talvez-voce-deva-conversar-com-alguem-workbook-2091-20220429135714.jpg" class="img-fluid rounded-start" alt="...">
 			</div>
 			<div class="col-md-8">
 				<div class="card-body">
@@ -106,7 +106,7 @@
 
 
 
-	<script type="text/javascript" src="resources/js/script.js"></script>
+	<script type="text/javascript" src="/resources/js/script.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

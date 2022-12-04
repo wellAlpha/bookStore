@@ -25,8 +25,8 @@
 
 	<nav class="navbar navbar-expand-lg bg-info">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="#"><img
-				src="resources/img/livraria.png" alt="" class="responsive-img left"
+			<a class="navbar-brand" href="/"><img
+				src="/resources/img/livraria.png" alt="" class="responsive-img left"
 				style="max-height: 100px;"></a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -37,19 +37,7 @@
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="#"></a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Categoria</a></li>
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false"> Autor</a>
-						<ul class="dropdown-menu">
-							<c:forEach items="${autores}" var="autor">
-								<li><a class="dropdown-item"
-									href="${s:mvcUrl('HC#buscarLivroPorAutor').arg(0, autor.id).build()}">${autor.nome}</a></li>
-							</c:forEach>
-
-						</ul></li>
+				
 				</ul>
 				<form:form class="d-flex" role="search"
 					action="${s:mvcUrl('HC#barraDeBusca').build()}" method="POST"
