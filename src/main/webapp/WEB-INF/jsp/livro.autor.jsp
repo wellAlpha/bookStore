@@ -102,21 +102,41 @@
 		<div style="display: flex; justify-content: space-evenly;">
 			<c:forEach items="${livros}" var="liv">
 
-				<div class="card border" style="width: 17rem; height: 5rem">
-					<img
-						src="${liv.pathFoto != null ? '/'.concat(liv.pathFoto)
-						: "
-						http://www.ccta.ufpb.br/labeet/contents/acervos/categorias/cordofones/udecra/sem-imagem.jpg"}" style="height: 18rem"
-						class="card-img-top">
-					<div class="card-body">
-						<h5 class="card-title">${liv.titulo }</h5>
-						<p class="card-text">R$ ${liv.preco}</p>
-						<p class="card-text">${liv.paginas}páginas</p>
-						<p class="card-text">Autor: ${liv.autor.nome}</p>
-						<a href="${s:mvcUrl('SCC#cartAdd').arg(0, liv.id).build()}"
-							class="btn btn-primary">Adicionar ao carrinho</a>
+				<div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-6">
+				<div class="product-thumb transition">
+					<div class="image">
+						<a href="${s:mvcUrl('HC#detalhesLivro').arg(0, liv.id).build()}"><img
+							width="200" height="200" loading="lazy"
+							src="/${liv.pathFoto}" class="img-responsive" /></a>
+					</div>
+					<br>
+					<div class="caption">
+						<h4>
+							<a href="${s:mvcUrl('HC#detalhesLivro').arg(0, liv.id).build()}">${liv.titulo }</a>
+						</h4>
+						<h4 class="price">
+							<b>R$${liv.preco}</b>
+						</h4>
+						<br>
+
+					</div>
+					<div class="button-group">
+
+						<a href="${s:mvcUrl('SCC#cartAdd').arg(0, liv.id).build()}"  class="btn btn-light"type="button" onclick="cart.add('19248335');">
+							<i class="fa fa-shopping-cart"></i> <span
+								class="hidden-xs hidden-sm hidden-md">Comprar</span>
+						</a>
+
+						<button type="button" data-toggle="tooltip"
+							title="Lista de desejos" onclick="wishlist.add('19248335');">
+							<i class="fa fa-heart"></i>
+						</button>
+						<!--		
+        <button type="button" data-toggle="tooltip" title="Comparar" onclick="compare.add('19248335');"><i class="fa fa-exchange"></i></button>
+		-->
 					</div>
 				</div>
+			</div>
 
 
 			</c:forEach>

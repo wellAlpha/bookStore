@@ -116,9 +116,10 @@ public class HomeController {
 	}
 	
 	@GetMapping("/destalhes/livro/{id}")
-	public ModelAndView detalhesLivro(@PathVariable int id) {
-		ModelAndView modelAndView = new ModelAndView("detalhes.livro");
-		
+	public ModelAndView detalhesLivro(@PathVariable int id, Livro livro) {
+		ModelAndView modelAndView = new ModelAndView("detalhes");
+		var livroR = livroRepository.findById(id).get();
+		modelAndView.addObject("livro", livroR);
 		return modelAndView;
 	}
 	
