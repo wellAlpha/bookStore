@@ -67,12 +67,12 @@
 			<div class="card mb-3" style="max-width: 540px;">
 				<div class="row g-0">
 					<div class="col-md-4">
-						<img
+						<img class="img-fluid rounded-start"
 							src="/${livro.pathFoto}" alt="...">
 					</div>
 					<div class="col-md-8">
 						<div class="card-body">
-							<h5 class="card-title">${livro.titulo}</h5>
+							<h5 class="card-title text-wrap">${livro.titulo}</h5>
 							<p class="card-text text-truncate">De modo geral, buscamos a ajuda de um
 								terapeuta para melhor compreender as angústias, os medos, a
 								culpa ou quaisquer outros sentimentos que nos causam desconforto
@@ -95,6 +95,7 @@
 								ouvir. Um livro sobre a importância dos encontros, dos afetos e
 								da coragem de todos os que partimos para a aventura do
 								autoconhecimento.</p>
+								<p class="card-text">R$ ${{livro.preco}}</p>
 							<p class="card-text">
 								<a href="${s:mvcUrl('SCC#cartAdd').arg(0, livro.id).build()}"
 									class="btn btn-primary">Adicionar ao carrinho</a>

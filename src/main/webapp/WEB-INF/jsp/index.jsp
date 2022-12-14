@@ -79,10 +79,13 @@
 					<button class="btn btn-outline-success" type="submit">Buscar</button>
 				</form:form>
 				<div class=" col-2 d-flex justify-content-center">
-					<a href="/cart"><i class="fa fa-shopping-cart fa-3x"
-						aria-hidden="true"></i></a>
+					<div class="col-3"><a href="/cart"><i class="fa fa-shopping-cart fa-3x"
+						aria-hidden="true"></i></a></div>
+						<div class="col-3">
+							<a href="/admin/categoria"><i class="fa fa-cog fa-3x" aria-hidden="true"></i></a>
+						</div>
+					
 				</div>
-
 			</div>
 		</div>
 	</nav>
@@ -299,25 +302,6 @@
 			<footer>
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-12">
-							<h5>Siga-nos em nossas redes sociais!</h5>
-							<ul class="list-unstyled">
-								<li><a target="_blank"
-									href="https://pt-br.facebook.com/livraria.leitura"><img
-										width="40" height="40" src="image/etc/facebook.png"></a> <a
-									target="_blank"
-									href="https://instagram.com/livrarialeitura?hl=pt-br"><img
-										width="40" height="40" src="image/etc/instagram.png"></a> <a
-									target="_blank"
-									href="https://youtube.com/channel/UCwidZVaByjUfjsJ5KsSqurw"><img
-										width="40" height="40" src="image/etc/youtube.png"></a> <a
-									target="_blank"
-									href="https://pt.linkedin.com/company/livraria-leitura"><img
-										width="40" height="40" src="image/etc/linkedin.png"></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="row">
 						<div class="col-sm-2">
 							<h5>Informações</h5>
 							<ul class="list-unstyled">
@@ -397,46 +381,7 @@
 									href="https://leitura.com.br/index.php?route=account/newsletter">Informativo</a></li>
 							</ul>
 						</div>
-						<div class="col-sm-2">
-							<h5>Formas de pagamento</h5>
-							<ul class="list-unstyled">
-								<li><img width="50" height="28"
-									style="margin-right: 5px; margin-top: 2px; border-radius: 5px;"
-									src="app/cielo/images/amex.gif"> <img width="50"
-									height="28"
-									style="margin-right: 5px; margin-top: 2px; border-radius: 5px;"
-									src="app/cielo/images/diners.gif"> <img width="50"
-									height="28"
-									style="margin-right: 5px; margin-top: 2px; border-radius: 5px;"
-									src="app/cielo/images/elo.gif"> <img width="50"
-									height="28"
-									style="margin-right: 5px; margin-top: 2px; border-radius: 5px;"
-									src="app/cielo/images/hipercard.gif"> <img width="50"
-									height="28"
-									style="margin-right: 5px; margin-top: 2px; border-radius: 5px;"
-									src="app/cielo/images/mastercard.gif"> <img width="50"
-									height="28"
-									style="margin-right: 5px; margin-top: 2px; border-radius: 5px;"
-									src="app/cielo/images/visa.gif"> <img width="50"
-									height="28"
-									style="margin-right: 5px; margin-top: 2px; border-radius: 5px;"
-									src="app/cielo/images/boleto.png"></li>
-							</ul>
-						</div>
-						<div class="col-sm-2">
-							<h5>Desenvolvimento</h5>
-							<ul class="list-unstyled">
-								<li><img width="160" height="28"
-									style="border-radius: 5px;" src="image/etc/powered_by.png"></li>
-								<li><a target="_blank"
-									href="https://transparencyreport.google.com/safe-browsing/search?url=https%3A%2F%2Fwww.leitura.com.br">
-										<img width="160" height="52"
-										style="margin-top: 25px; border-radius: 5px;"
-										src="image/etc/site-seguro.png">
-								</a></li>
-							</ul>
-						</div>
-					</div>
+						
 				</div>
 				<div class="footer-text">
 					<p style="text-align: center;">
