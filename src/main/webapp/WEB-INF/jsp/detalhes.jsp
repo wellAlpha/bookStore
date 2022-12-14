@@ -95,7 +95,7 @@
 								ouvir. Um livro sobre a importância dos encontros, dos afetos e
 								da coragem de todos os que partimos para a aventura do
 								autoconhecimento.</p>
-								<p class="card-text">R$ ${{livro.preco}}</p>
+								<p class="text-muted">R$ ${livro.preco}</p>
 							<p class="card-text">
 								<a href="${s:mvcUrl('SCC#cartAdd').arg(0, livro.id).build()}"
 									class="btn btn-primary">Adicionar ao carrinho</a>

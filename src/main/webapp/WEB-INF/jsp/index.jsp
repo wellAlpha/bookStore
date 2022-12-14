@@ -138,7 +138,7 @@
 					</div>
 					<br>
 					<div class="caption">
-						<h4>
+						<h4 class="text-break">
 							<a href="${s:mvcUrl('HC#detalhesLivro').arg(0, liv.id).build()}">${liv.titulo }</a>
 						</h4>
 						<h4 class="price">
